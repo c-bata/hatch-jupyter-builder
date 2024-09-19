@@ -228,7 +228,9 @@ def run(cmd: str | list[Any], **kwargs: Any) -> int:
     cmd = normalize_cmd(cmd)
     log = _get_log()
     log.info("> %s", list2cmdline(cmd))
-    return subprocess.check_call(cmd, check=True, **kwargs)
+    print(cmd)
+    print(kwargs)
+    return subprocess.check_call(cmd, cwd=kwargs["cwd"])
 
 
 def ensure_targets(ensured_targets: list[str]) -> None:
